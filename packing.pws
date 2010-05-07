@@ -1,0 +1,28 @@
+
+[filenumbers]
+0=237
+1=33
+2=227
+
+[filemarkers]
+0=
+1=
+2=
+
+[File View]
+filter.file.unmatch=*.so *.o *.a *.la
+filter.file.ignore.hidden=0
+filter.dir.ignore.hidden=0
+
+[executer]
+RunInTerminal=true
+
+[filelist]
+0=/home/never/Projects/packing/src/callbacks.c
+
+[Project Tree]
+0=0
+1=0:0
+
+[File Tree]
+0=0
