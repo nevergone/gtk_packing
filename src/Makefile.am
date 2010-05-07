@@ -1,30 +1,34 @@
 ## Process this file with automake to produce Makefile.in
 
-## Created by Anjuta - will be overwritten
-## If you don't want it to overwrite it,
-## 	Please disable it in the Anjuta project configuration
+AM_CPPFLAGS = \
+	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
+	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
+	$(GTK_PACKING_CFLAGS)
 
-INCLUDES = \
-	$(GTK_CFLAGS)
-
-packing_CFLAGS =\
+AM_CFLAGS =\
 	 -Wall\
-	 -O1\
 	 -g
 
-bin_PROGRAMS = packing
+bin_PROGRAMS = gtk_packing
 
-packing_SOURCES = \
-	support.h\
-	support.c\
-	main.c\
-	interface.h\
-	interface.c\
-	callbacks.h\
-	callbacks.c
+gtk_packing_SOURCES = \
+	callbacks.c \
+	callbacks.h \
+	main.c \
+	interface.c \
+	interface.h \
+	support.c \
+	support.h
 
-packing_LDFLAGS = 
+gtk_packing_LDFLAGS = \
+	-Wl,--export-dynamic
 
-packing_LDADD =  \
-	$(GTK_LIBS)
+gtk_packing_LDADD = $(GTK_PACKING_LIBS)
 
+EXTRA_DIST = $(ui_DATA)
+
+# Remove ui directory on uninstall
+uninstall-local:
+	-rm -r $(uidir)
+	-rm -r $(datadir)/gtk_packing
